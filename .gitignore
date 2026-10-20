@@ -1,0 +1,41 @@
+# Dependencies, toolchains, and generated files
+/node_modules/
+/dist/
+/.tools/
+/src-tauri/target/
+/src-tauri/gen/
+/test-results/
+/playwright-report/
+/release/
+
+# Local settings, credentials, and session data
+.env
+.env.*
+!.env.example
+/.codex/
+/.agents/
+/.aws/
+/sessions/
+/logs/
+auth.json
+session_index.jsonl
+*.log
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.cer
+*.mobileprovision
+
+# Release artifacts
+*.app/
+*.dmg
+*.zip
+
+# Editor and macOS files
+/.idea/
+.DS_Store
+._*
+*.swp
+*.swo

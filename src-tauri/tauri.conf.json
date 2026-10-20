@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Agent Office",
+  "version": "0.1.0",
+  "identifier": "com.gyutae.agent-office",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src ipc: http://ipc.localhost; object-src 'none'; base-uri 'self'; form-action 'none'",
+      "devCsp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src ipc: http://ipc.localhost http://127.0.0.1:1420 ws://127.0.0.1:1420"
+    }
+  },
+  "bundle": { "active": true, "targets": ["app"], "icon": ["icons/icon.png"], "resources": ["../LICENSE", "../THIRD_PARTY_NOTICES.md", "../licenses/*"], "category": "DeveloperTool", "shortDescription": "추가 모델 호출 없는 Codex 작업 관찰", "macOS": { "signingIdentity": "-", "minimumSystemVersion": "13.0" } }
+}
