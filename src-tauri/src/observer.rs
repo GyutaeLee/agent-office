@@ -140,8 +140,10 @@ fn collect(dir: &Path, depth: usize, files: &mut Vec<PathBuf>, errors: &mut Vec<
 mod tests {
     use super::*;
     use std::io::Write;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    static TEMP_ID: AtomicUsize = AtomicUsize::new(0);
     fn temp() -> PathBuf {
-        let p = std::env::temp_dir().join(format!("agent-office-test-{}-{}", std::process::id(), Utc::now().timestamp_nanos_opt().unwrap()));
+        let p = std::env::temp_dir().join(format!("agent-office-test-{}-{}-{}", std::process::id(), Utc::now().timestamp_nanos_opt().unwrap(), TEMP_ID.fetch_add(1, Ordering::Relaxed)));
         fs::create_dir(&p).unwrap(); p
     }
     const META: &str = "{\"timestamp\":\"2026-10-19T00:00:00Z\",\"type\":\"session_meta\",\"payload\":{\"id\":\"s\",\"cwd\":\"/demo\"}}\n";
